@@ -3,8 +3,14 @@ import React from "react";
 class Editar extends React.Component {
     constructor(props) {
         super(props);
+         this.state = { }
     }
-    state = {  }
+   
+componentDidMount(){
+    // eslint-disable-next-line react/prop-types
+    console.log(this.props.match.params.id)
+}
+
     render() { 
         return ( <div className="card">
             <div className="card-header">

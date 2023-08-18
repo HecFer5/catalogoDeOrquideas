@@ -24,7 +24,7 @@ function App() {
     <Routes>
     <Route exact path='/' Component={Listar}></Route> 
     <Route  path='/crear' Component={Crear}></Route> 
-    <Route  path='/editar' Component={Editar}></Route> 
+    <Route  path='/editar/:id' Component={Editar}></Route> 
     
    </Routes>
    </div>

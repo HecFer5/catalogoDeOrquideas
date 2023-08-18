@@ -7,6 +7,21 @@ class Listar extends React.Component {
         this.state = { datosCargados: false }
         nombres: []
     }
+
+
+    borraRegistros = (id) => {
+        console.log(id)
+        fetch("http://localhost/nombres/?borrar=" + id)
+            .then(respuesta => respuesta.json())
+            .then((datosRespuesta) => {
+
+                console.log(datosRespuesta);
+                this.cargarDatos()
+
+            })
+            .catch(console.log)
+
+    }
     cargarDatos() {
 
         fetch("http://localhost/nombres/")
@@ -32,10 +47,10 @@ class Listar extends React.Component {
             return (
                 <div className="card">
                     <div className="card-header">
-                    <Link className="btn btn-success" to={"/crear"}>Agregar nuevo</Link>
+                        <Link className="btn btn-success" to={"/crear"}>Agregar nuevo</Link>
                     </div>
-                    <div className="card-body">                            
-                    <h4>Lista de Orquideas</h4>
+                    <div className="card-body">
+                        <h4>Lista de Orquideas</h4>
                         <table className="table">
                             <thead>
                                 <tr>
@@ -54,9 +69,9 @@ class Listar extends React.Component {
                                                 <td>{nombre.cientifico}</td>
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
-                                                        <Link className="btn btn-warning" to={"/editar"}>Editar</Link>
-
-                                                        <button type="button" className="btn btn-danger">Borrar</button>
+                                                        <Link className="btn btn-warning"
+                                                            to={"/editar" + nombre.id}>Editar</Link>
+                                                        <button type="button" className="btn btn-danger" onClick={() => this.borraRegistros(nombre.id)}>Borrar</button>
                                                     </div>
                                                 </td>
                                             </tr>
